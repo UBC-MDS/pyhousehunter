@@ -1,12 +1,37 @@
+# author: Alex Truong Hai Yen
+# date: 2021-02-25
+
+"""""Scrape housing data from a give craiglist url and export result to csv file.
+
+Usage: pyhousehunter/scraper.py --url=<url> 
+
+Options:
+--url=<url>              The chosen craiglist url 
+"""
+
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import csv
+from docopt import docopt
 
-### PART1: scraping directly from the web
-url = 'https://vancouver.craigslist.org/search/van/apa' 
+opt = docopt(__doc__)
 
-def online_scraper(url):
+
+### PART1: create soup object from the url
+def make_soup(url):
+    """Function to scrape housing data from a given craiglist url
+
+    Parameters
+    ----------
+    url : url
+        The given craiglist url
+
+    Returns
+    -------
+    bs4.BeautifulSoup
+        The soup object from scraping the url
+    """
     headers = {
         'DNT': '1',
         'Referer': 'https://vancouver.craigslist.org/',
@@ -26,35 +51,49 @@ def online_scraper(url):
     return soup
 
 
+### PART2: extracting information from scrape results and export to csv
+def extractor(soup): 
+    """Extract information from the soup object and export result to csv
 
-### PART2: extracting information from scrape results
+    Parameters
+    ----------
+    soup : bs4.BeautifulSoup
+        The soup object from scraping the url
 
-#soup = online_scraper(url) # online scraping
-soup = BeautifulSoup(open("../van_housing_listings.html"), "html.parser") # local scraping
-listings = soup.find_all('div', attrs = {'class': 'result-info'})
-data = []
+    Returns
+    -------
+        a csv file contained listing information such as price, house type and neighborhood
 
-for i in range(len(listings)):
-    listing_id = listings[i].find('a').get('data-id')
-    listing_url = listings[i].find('a').get('href')
-    price= listings[i].find('span', attrs = {'class': 'result-price'}).text
-    house = listings[i].find('span', attrs = {'class': 'housing'})
-    neighborhood = listings[i].find('span', attrs = {'class': 'result-hood'})
+    """
+       
+    listings = soup.find_all('div', attrs = {'class': 'result-info'})
+    data = []
 
-    data.append((listing_id, listing_url, price, house, neighborhood))
+    # extract data from soup object
+    for i in range(len(listings)):
+        listing_id = listings[i].find('a').get('data-id')
+        listing_url = listings[i].find('a').get('href')
+        price= listings[i].find('span', attrs = {'class': 'result-price'}).text
+        house = listings[i].find('span', attrs = {'class': 'housing'})
+        neighborhood = listings[i].find('span', attrs = {'class': 'result-hood'})
+
+        data.append((listing_id, listing_url, price, house, neighborhood))
+    
+    # writing results to CSV file
+    with open('raw.csv', 'w', newline='') as csv_file:
+        writer = csv.writer(csv_file)
+        for listing_id, listing_url, price, house, neighborhood in data:
+            writer.writerow([listing_id, listing_url, price, house, neighborhood])
 
 
-### PART2B: preprocessing (to be abstracted to another scrip and work directly with csv)
+### PART3: the main function      
+def main(url):
+    soup = BeautifulSoup(open("pyhousehunter/temp/van_housing_listings.html"), "html.parser") # local scraping
+    #soup = make_soup(url) # online scraping
+    data = extractor(soup)
 
-# price
-#processed_price = int("".join(price.split('$')[1].split(',')))
-#print(processed_price+1) # test for numeric output
 
-
-### PART3: writing results to CSV file
-
-with open('raw.csv', 'w', newline='') as csv_file:
-    writer = csv.writer(csv_file)
-    for listing_id, listing_url, price, house, neighborhood in data:
-        writer.writerow([listing_id, listing_url, price, house, neighborhood])
+if __name__ == "__main__":
+  main(opt["--url"])
+  
 
