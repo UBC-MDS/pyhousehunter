@@ -11,6 +11,9 @@ You can contribute in many ways:
 
 Types of Contributions
 ----------------------
+Contributions from Core Development Team 
+~~~~~~~~~~~
+The core development team will be working on the main features of this package. The members of the core team are expected to follow the github workflow (https://guides.github.com/introduction/flow); working on feature branches and submitting pull requests. 
 
 Report Bugs
 ~~~~~~~~~~~
