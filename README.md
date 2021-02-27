@@ -52,7 +52,7 @@ The official documentation is hosted on Read the Docs: https://pyhousehunter.rea
 
 ## Contributors
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/elabandari/pyhousehunter/graphs/contributors).
+We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/pyhousehunter/graphs/contributors).
 
 ### Credits
 

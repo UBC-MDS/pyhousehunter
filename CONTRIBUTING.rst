@@ -3,7 +3,12 @@
 ============
 Contributing
 ============
+Workflow for Core Development Team
+----------------------
+Members of the core development team have agreed upon following the github workflow (https://guides.github.com/introduction/flow); working on feature branches and submitting pull requests.
 
+External Contributions
+----------------------
 Contributions are welcome, and they are greatly appreciated! Every little bit
 helps, and credit will always be given.
 
@@ -11,11 +16,10 @@ You can contribute in many ways:
 
 Types of Contributions
 ----------------------
-
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/elabandari/pyhousehunter/issues.
+Report bugs at https://github.com/UBC-MDS/pyhousehunter/issues.
 
 If you are reporting a bug, please include:
 
@@ -45,7 +49,7 @@ articles, and such.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/elabandari/pyhousehunter/issues.
+The best way to send feedback is to file an issue at https://github.com/UBC-MDS/pyhousehunter/issues.
 
 If you are proposing a feature:
 
