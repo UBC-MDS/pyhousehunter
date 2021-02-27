@@ -3,7 +3,12 @@
 ============
 Contributing
 ============
+Workflow for Core Development Team
+----------------------
+Members of the core development team have agreed upon following the github workflow (https://guides.github.com/introduction/flow); working on feature branches and submitting pull requests.
 
+External Contributions
+----------------------
 Contributions are welcome, and they are greatly appreciated! Every little bit
 helps, and credit will always be given.
 
@@ -11,10 +16,6 @@ You can contribute in many ways:
 
 Types of Contributions
 ----------------------
-Contributions from Core Development Team 
-~~~~~~~~~~~
-The core development team will be working on the main features of this package. The members of the core team are expected to follow the github workflow (https://guides.github.com/introduction/flow); working on feature branches and submitting pull requests. 
-
 Report Bugs
 ~~~~~~~~~~~
 
