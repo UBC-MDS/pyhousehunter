@@ -9,16 +9,17 @@ Python package for searching for housing on Craigslist.
 
 ## Overview
 
-Hunting for rental can be an exhausting and frustrating experience in Canada, but this process can be made easy with a simple installation of our package. This Python package intends to facilitate house hunting by scraping the listing information from Craigslist and organizing the extracted data for the users. Instead of having to manually go on the website to catch up with individual new listings, the users will be updated through email with new listings as per their selection criteria. 
+Hunting for rentals can be an exhausting and frustrating experience in Canada, but this process can be made easy with a simple installation of our package. This Python package intends to facilitate the house hunting process by scraping the listing information from Craigslist and organizing the extracted data for the user. Instead of having to manually go on the website to catch up with individual new listings, the user will be updated through email with new results as per their selection criteria. 
+
 
 ## Functions
 
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
-| web_scraper | url | csv file | Scrape data from rental websites into a csv file.|
+| scraper | url | csv file | Scrape data from rental websites into a csv file.|
 | data_cleaner | csv file location | csv file | Clean the extracted data |
-| data_filter | csv file, min_price, max_price, sqrt_ft, no_bathroom, no_bedroom, neighbourhood | csv file | Filter the cleaned data set based on user inputs|
-| emailer | csv file, email address | csv file | Send the organized listing information to user email |
+| data_filter | csv file, min_price, max_price, sqrt_ft, num_bathroom, num_bedroom, neighbourhood | csv file | Filter the cleaned data set based on user inputs|
+| send_email | csv file, email address | csv file | Send the organized listing information to user email |
 
 
 
