@@ -9,7 +9,7 @@ Python package for searching for housing on Craigslist.
 
 ## Overview
 
-Hunting for rental can be an exhausting and frustrating experience in Canada, but this process can be made easy with a simple installation of our package. This Python package intends to facilitate house hunting by scraping the listing information from rental websites and organizing the extracted data for the users. Instead of having to manually go on rental websites to catch up with new listings, the users will be updated through email with new listings as per their selection criteria. 
+Hunting for rental can be an exhausting and frustrating experience in Canada, but this process can be made easy with a simple installation of our package. This Python package intends to facilitate house hunting by scraping the listing information from Craigslist and organizing the extracted data for the users. Instead of having to manually go on the website to catch up with individual new listings, the users will be updated through email with new listings as per their selection criteria. 
 
 ## Functions
 
