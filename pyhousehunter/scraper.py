@@ -32,6 +32,8 @@ def scraper(url, online = False, save_csv = False):
     -------
     >>> scraper(url = 'https://vancouver.craigslist.org/search/van/apa', save_csv = True)
     """
+    # PART 0: Validate inputs
+    
 
     # PART 1: create soup object either from the url or local HTML file
     if online:
@@ -71,10 +73,10 @@ def scraper(url, online = False, save_csv = False):
         data,
         columns = ['listing_id', 'listing_url', 'price', 'house_type', 'neighborhood']
     )
-    
+    print
 
     # PART3: activate the option to write results to CSV file
     if save_csv:
-        output.to_csv('raw.csv', index_label = "serial_no")
+        output.to_csv('raw.csv') # easier importing in R
 
     return output
