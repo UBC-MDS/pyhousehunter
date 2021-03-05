@@ -5,13 +5,14 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import csv
+import regex as re
  
 def scraper(url, online = False):
     """Function to scrape housing data from a given Craiglist url
 
     Parameters
     ----------
-    url : url
+    url : str
         The given craiglist url to scrape the data from
     
     online: bool
@@ -25,22 +26,34 @@ def scraper(url, online = False):
 
     Examples
     -------
-    >>> scraper(url = 'https://vancouver.craigslist.org/search/van/apa')
+    >>> scraper(url = 'https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa')
     """
-    # PART 0: Error handling
-    # try:
+    # PART 0: Exception handling/ Input validation
 
-    # except:
-
+    ## the right Craiglist URL
+    regex = r'(http|https):\/\/vancouver.craigslist.org\/d\/apartments-housing-for-rent\/search\/apa.*'
+    
+    try:
+        re.search(regex,url)
+    except TypeError:
+        print('Wrong data type. Please enter a correct Craiglist Housing URL')
+    except SyntaxError:
+        print('Wrong syntax. Please enter a correct Craiglist Housing URL')
+    
+    if re.search(regex,url) == None:
+        raise ValueError("Invalid URL. Please enter a Craiglist Housing URL with this format https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa")
+    
+    ## the right option for online
+    if type(online) != bool:
+        raise TypeError("Please enter Boolean value: True or False")
 
     # PART 1: create soup object either from the url or local HTML file
-    if online:
+    if online == True:
         headers = {
             'DNT': '1',
             'Referer': 'https://vancouver.craigslist.org/',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
         }
-
         page = requests.get(url, headers = headers)
 
         # checking scrape status
@@ -50,6 +63,7 @@ def scraper(url, online = False):
             print(page.status_code)
 
         soup = BeautifulSoup(page.text, 'html.parser')
+    
     else:
         soup = BeautifulSoup(open("pyhousehunter/temp/van_housing_listings.html"), "html.parser") # local scraping
 
@@ -80,6 +94,5 @@ def scraper(url, online = False):
         data,
         columns = ['listing_id', 'listing_url', 'price', 'house_type', 'neighborhood']
     )
-
 
     return output

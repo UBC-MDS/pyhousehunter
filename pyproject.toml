@@ -8,8 +8,12 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.8"
 beautifulsoup4 = "^4.9.3"
+requests = "^2.25.1"
+pandas = "^1.2.3"
+regex = "^2020.11.13"
 
 [tool.poetry.dev-dependencies]
+pytest-cov = "^2.11.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
