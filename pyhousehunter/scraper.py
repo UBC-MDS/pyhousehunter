@@ -6,7 +6,7 @@ import requests
 import pandas as pd
 import csv
  
-def scraper(url, online = False, save_csv = False):
+def scraper(url, online = False):
     """Function to scrape housing data from a given craiglist url
 
     Parameters
@@ -18,22 +18,20 @@ def scraper(url, online = False, save_csv = False):
         Whether the data is scraped directly online from the url (default = False) 
         False means the data is scraped from local HTML file
 
-    save_csv: bool
-        Whether to export the data to CSV file (default = False)
-
     Returns
     -------
     pandas.core.frame.DataFrame
         A dataframe containing listing information such as price, house type and neighborhood. 
-        A csv containing the dataframe could also be exported with `save_csv` option is 
-        activated to True.
 
     Examples
     -------
-    >>> scraper(url = 'https://vancouver.craigslist.org/search/van/apa', save_csv = True)
+    >>> scraper(url = 'https://vancouver.craigslist.org/search/van/apa')
     """
     # PART 0: Validate inputs
-    
+    # try:
+
+    # except:
+
 
     # PART 1: create soup object either from the url or local HTML file
     if online:
@@ -64,19 +62,22 @@ def scraper(url, online = False, save_csv = False):
         listing_id = listings[i].find('a').get('data-id')
         listing_url = listings[i].find('a').get('href')
         price= listings[i].find('span', attrs = {'class': 'result-price'}).text
-        house = listings[i].find('span', attrs = {'class': 'housing'})
-        neighborhood = listings[i].find('span', attrs = {'class': 'result-hood'})
-
-        data.append((listing_id, listing_url, price, house, neighborhood))
+        
+        house = listings[i].find_all('span', attrs = {'class': 'housing'})
+        if len(house) != 0:
+            house_type = house[0].text.strip().replace(" ", "").replace("\n", "")[:-1]
+        else:
+            house_type = ""
+        
+        neighborhood = listings[i].find_all('span', attrs = {'class': 'result-hood'})
+        if len(neighborhood) != 0:
+            neighborhood = neighborhood[0].text.strip().replace("(","").replace(")","")
+        else:
+            neighborhood = ""
+        data.append((listing_id, listing_url, price, house_type, neighborhood))
 
     output = pd.DataFrame(
         data,
         columns = ['listing_id', 'listing_url', 'price', 'house_type', 'neighborhood']
     )
-    print
-
-    # PART3: activate the option to write results to CSV file
-    if save_csv:
-        output.to_csv('raw.csv') # easier importing in R
-
     return output
