@@ -20,7 +20,7 @@ def test_scraper_missing_required_input_url():
 
 def test_scraper_url_not_string():
     """
-    Test to confirm that TypeError is raised the required URL input is not string
+    Test to confirm that TypeError is raised the required URL input is not a string
     """
     with raises(TypeError):
        scraper.scraper(url = 123, online = True)
@@ -43,27 +43,24 @@ def test_scraper_online_not_boolean():
        scraper(url = url, online = 'sunny')
        scraper(url = url, online = '25yrs?')
 
-
 # Tests on output
 
 data = scraper.scraper(url = url, online = True)
-def test_scraper_output_shape():
-    """
-    Test to confirm the shape of the output dataframe
-    """
-    
-    
-    assert data.shape == (120,5)
-
 def test_scraper_output_not_empty():
     """
     Test to confirm the output dataframe is not empty
     """
     assert data.empty == False
 
+def test_scraper_output_shape():
+    """
+    Test to confirm the shape of the output dataframe is correct
+    """    
+    assert data.shape == (120,5)
+
 def test_scraper_output_fields_is_string():
     """
-    Test to confirm that the data type of each column of the output dataframe is string
+    Test to confirm that the data type of each column of the output dataframe is a string
     """
     for i in random.sample(range(0, data.shape[0]), 5):
         for col in data.columns:
@@ -96,11 +93,8 @@ toy_data['price'] = toy_data['price'].astype(str).str.strip()
 toy_data['listing_id'] = toy_data['listing_id'].astype(str)
 def test_scraper_output_match_toy_data(): 
     """
-    Test to confirm that the scraped data frame contains data in toy dataset.
+    Test to confirm that the scraped data frame contains data in toy dataset
     """
     for i in range(0, toy_data.shape[0]):
         lst_id = toy_data.listing_id.tolist()
         assert local_data.loc[local_data['listing_id'] == lst_id[i], :].equals(pd.DataFrame(toy_data.iloc[i]).T)
-
-
-# Further tests on function internal
