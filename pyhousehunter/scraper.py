@@ -7,7 +7,7 @@ import pandas as pd
 import csv
  
 def scraper(url, online = False):
-    """Function to scrape housing data from a given craiglist url
+    """Function to scrape housing data from a given Craiglist url
 
     Parameters
     ----------
@@ -16,18 +16,18 @@ def scraper(url, online = False):
     
     online: bool
         Whether the data is scraped directly online from the url (default = False) 
-        False means the data is scraped from local HTML file
+        False means the data is scraped from a local HTML file
 
     Returns
     -------
     pandas.core.frame.DataFrame
-        A dataframe containing listing information such as price, house type and neighborhood. 
+        A dataframe containing listing information like listing ID, listing url, price, house type and neighborhood. 
 
     Examples
     -------
     >>> scraper(url = 'https://vancouver.craigslist.org/search/van/apa')
     """
-    # PART 0: Validate inputs
+    # PART 0: Error handling
     # try:
 
     # except:
@@ -80,4 +80,6 @@ def scraper(url, online = False):
         data,
         columns = ['listing_id', 'listing_url', 'price', 'house_type', 'neighborhood']
     )
+
+
     return output
