@@ -3,7 +3,7 @@
 
 import pandas as pd
 import numpy as np
-import re
+import regex as re
 from geotext import GeoText
 from operator import attrgetter
 
