@@ -1,19 +1,18 @@
 import pandas as pd
 import csv
 
-def data_filter(csv,
+def data_filter(df,
                 min_price,
                 max_price,
                 sqrt_ft,
                 num_bedroom,
-                num_bathroom,
-                neighbourhood):
+                city_name):
 
-    """Function to filter the given csv as per selection inputs
+    """Function to filter the given dataframe as per selection inputs
     Parameters
     ----------
-    csv: csv
-        A cleaned csv file
+    df: panda.DataFrame
+        A cleaned dataframe
     min_price: int
         Minimum price 
     max_price: int
@@ -22,21 +21,50 @@ def data_filter(csv,
         Minimum square feet
     num_bedroom: int
         Number of bedroom 
-    num_bathroom: int
-        Number of bathroom
-    neighbourhood: string
-        A neighbourhood 
+    city_name: string
+        A city
 
     
     Returns
     -------
-    A csv
-        The filtered csv based on user selection criteria
+    A panda.DataFrame
+        The filtered dataframe based on user selection criteria
 
     Examples
     -------
-    >>> filter(cleaned_info.csv, 2000, 3000, 900, 2, 2, "Downtown")
+    >>> filter(cleaned_df, 2000, 3000, 900, 2, "Vancouver")
                
     """
+    
+    # first check input type
+    if not isinstance(min_price, (int, float)):
+        raise TypeError("The minimum price entered is not a number")
 
-    return True
+    elif not isinstance(max_price, (int, float)):
+        raise TypeError("The maximum number entered is not a number.")
+    
+    elif not isinstance(sqrt_ft, int):
+        raise TypeError("The square feet entered is not an integer.")
+
+    elif not isinstance(num_bedroom, int):
+        raise TypeError("The number of bedroom entered is not an integer")
+
+    elif not isinstance(city_name, str):
+        raise TypeError("The city entered is not a string.")
+    
+    # then check input range
+    elif not 0 <= min_price <= max_price:
+        raise ValueError("Please enter appropriate positive price range.")
+
+    elif num_bedroom < 0:
+        raise ValueError("Please enter non-negative bedroom number.")
+    
+    # function body
+    filtered_df = df.query("(@min_price <= price <= @max_price)\
+                        and (num_bedroom.isnull() or num_bedroom == @num_bedroom)\
+                        and (area_sqft.isnull() or area_sqft >= @sqrt_ft)\
+                        and (city.isnull() or city.str.casefold() == @city_name.casefold())")
+
+    return filtered_df
+                  
+                             
