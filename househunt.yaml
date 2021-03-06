@@ -9,6 +9,7 @@ dependencies:
   - scipy
   - pandas
   - docopt
+  - regex
   - pip:
     - beautifulsoup4
 

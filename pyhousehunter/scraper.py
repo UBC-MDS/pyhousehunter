@@ -13,7 +13,7 @@ def scraper(url, online = False):
     Parameters
     ----------
     url : str
-        The given craiglist url to scrape the data from
+        The given housing craiglist URL to scrape the data from
     
     online: bool
         Whether the data is scraped directly online from the url (default = False) 

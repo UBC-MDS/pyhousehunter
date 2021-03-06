@@ -15,8 +15,8 @@ def test_scraper_missing_required_input_url():
     Test to confirm that TypeError is raised the required URL input is not missing
     """
     with raises(TypeError):
-        scraper(online = False)
-        scraper()
+        scraper.scraper(online = False)
+        scraper.scraper()
 
 def test_scraper_url_not_string():
     """
@@ -40,8 +40,8 @@ def test_scraper_online_not_boolean():
     """
     with raises(TypeError):
        scraper.scraper(url = url, online = 1)
-       scraper(url = url, online = 'sunny')
-       scraper(url = url, online = '25yrs?')
+       scraper.scraper(url = url, online = 'sunny')
+       scraper.scraper(url = url, online = '25yrs?')
 
 # Tests on output
 
