@@ -3,12 +3,13 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
-import os.path
+import pandas as pd
+import regex as re 
+import io
 
-def send_email(email_recipient,
-               email_subject = 'Results from PyHouseHunter',
-               attachment_location = ''):
-    """A function to email search results.
+def send_email(email_recipient, filtered_data,
+               email_subject = 'Results from PyHouseHunter'):
+    """A function to email search filtered search results.
 
     Parameters
     ----------
@@ -16,8 +17,8 @@ def send_email(email_recipient,
         The email address for recipient of results.
     email_subject : str, optional
         Subject for email results, by default 'Results from PyHouseHunter'
-    attachment_location : str, optional
-        Path to the result file, by default ''
+    filtered_data : pandas.DataFrame
+        Filtered  pandas.DataFrame generated from the pyhousehunter.filter() function.
 
     Returns
     -------
@@ -27,35 +28,49 @@ def send_email(email_recipient,
     -------
     >>> send_email("helloworld@gmail.com", "results.csv")
     """
-    # Code adapted from Michael King's Tutorial.
+
+    # Check User Input 
+    regex = r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    if not isinstance(email_recipient, str):
+        raise TypeError("The email address must be a string.")
+    if re.search(regex, email_recipient) == None:
+        raise ValueError("You have input an invalid Email Address.")
+    if not isinstance(email_subject, str):
+        raise TypeError("The subject must be a string.")
+    if not isinstance(filtered_data, pd.DataFrame):
+         raise TypeError("The filtered results must be a pandas dataframe.")
+    if filtered_data.empty:
+        raise ValueError("Your pandas dataframe is empty. There are no results to be emailed.")
+
+
+    # Outline email details
     email_sender = 'pyhousehunter@gmail.com'
     email_message = 'Houses matching your specifications are attached.'
     msg = MIMEMultipart()
     msg['From'] = email_sender
     msg['To'] = email_recipient
     msg['Subject'] = email_subject
-
+    # Attach email body 
     msg.attach(MIMEText(email_message, 'plain'))
     
-    if attachment_location != '':
-        filename = os.path.basename(attachment_location)
-        attachment = open(attachment_location, "rb")
-        part = MIMEBase('application', 'octet-stream')
-        part.set_payload(attachment.read())
-        encoders.encode_base64(part)
-        part.add_header('Content-Disposition',
-                        "attachment; filename= %s" % filename)
-        msg.attach(part)
+    # Turn cleaned pandas dataframe to csv email attachment
+    buffer = io.StringIO() 
+    filtered_data.to_csv(buffer)
+    part = MIMEBase('application', 'octet-stream')
+    part.set_payload(buffer.getvalue())
+    part.add_header('Content-Disposition', "attachment; filename=results.csv")
+    msg.attach(part)
 
+    # Try emailing results
     try:
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.ehlo()
         server.starttls()
         server.login('pyhousehunter@gmail.com', 'dsci524group6')
-        text = msg.as_string()
-        server.sendmail(email_sender, email_recipient, text)
-        print('email sent')
+        server.sendmail(email_sender, email_recipient, msg.as_string())
+        print('Email has been successfully sent.')
         server.quit()
-    except:
-        print("SMPT server connection error")
-    return
+    except smtplib.SMTPException as e:
+        print(f"The email was not sent. The following SMTP error occurred in the process: {e}")
+    
+    return 
