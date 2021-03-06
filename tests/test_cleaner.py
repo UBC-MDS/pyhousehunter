@@ -17,6 +17,13 @@ def test_cleaner_scraped_df_is_dataframe():
         cleaner.data_cleaner("raw.html") 
         cleaner.data_cleaner(123)
 
+def test_cleaner_scraped_df_not_empty():
+    """
+    Test to confirm the output dataframe is not empty
+    """
+    with raises(ValueError):
+        cleaner.data_cleaner(pd.DataFrame({'price':[], 'house_type':[], 'listing_url':[]}))
+
 def test_cleaner_scraped_df_not_missing_price():
     """
     Test to confirm that ValueError is raised when the scraped_df input is missing the price column

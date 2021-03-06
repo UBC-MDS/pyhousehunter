@@ -29,6 +29,9 @@ def data_cleaner(scraped_df):
     if not isinstance(scraped_df, pd.DataFrame):
         raise ValueError("Invalid input. Please enter a dataframe object")
 
+    if scraped_df.empty == True:
+        raise ValueError("The input dataframe is empty")
+
     if not 'price' in scraped_df.columns:
         raise ValueError("Missing price column in the input dataframe")
 
