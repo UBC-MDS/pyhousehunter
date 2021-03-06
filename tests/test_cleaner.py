@@ -43,7 +43,7 @@ def test_cleaner_scraped_df_not_missing_listing_url():
     Test to confirm that ValueError is raised when the scraped_df input is missing the listing_url column
     """
     with raises(ValueError):
-        cleaner.data_cleaner(pd.DataFrame([[1, 2]] , columns = ['price', 'lhouse_type']))
+        cleaner.data_cleaner(pd.DataFrame([[1, 2]] , columns = ['price', 'house_type']))
 
 
 # Tests on output
@@ -91,4 +91,3 @@ def test_cleaner_output_match_expected():
     Test to confirm that the cleaned data frame matches cleaned toy data
     """
     assert data.equals(pd.read_csv('tests/cleaned_toy_data.csv',dtype={"num_bedroom": "Int64", "area_sqft": "Int64"}))
-
