@@ -1,0 +1,16 @@
+name: 'househunt'
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - lxml
+  - pip
+  - scipy
+  - pandas
+  - docopt
+  - regex
+  - pip:
+    - beautifulsoup4
+
+

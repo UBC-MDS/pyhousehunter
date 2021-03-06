@@ -4,6 +4,31 @@
 
 Python package for searching for housing on Craigslist.
 
+-   Author: Ela Bandari, Junting He, Ling (Elina) Lin, Alex Truong
+
+
+## Overview
+
+Hunting for rentals can be an exhausting and frustrating experience in Canada, but this process can be made easy with a simple installation of our package. This Python package intends to facilitate the house hunting process by scraping the listing information from Craigslist and organizing the extracted data for the user. Instead of having to manually go on the website to catch up with individual new listings, the user will be updated through email with new results as per their selection criteria. 
+
+
+## Functions
+
+| Function Name | Input | Output | Description |
+|-----------|------------|---------------|------------------|
+| scraper | url | Pandas DataFrame | Scrape data from rental websites into a Pandas DataFrame|
+| data_cleaner | Pandas DataFrame | csv file | Clean the extracted data |
+| data_filter | Pandas DataFrame, min_price, max_price, sqrt_ft, num_bathroom, num_bedroom, neighbourhood | Pandas DataFrame | Filter the cleaned data set based on user inputs|
+| send_email | Pandas DataFrame, email address | csv file | Send the organized listing information to user email |
+
+
+
+## Our Package in the Python Ecosystem
+
+To the best of our knowledge, there is currently no existing Python package that simplifies the entire rental searching process with such a  comprehensive functionality. This package takes care of all the steps including scraping rental websites, processing the data, and emailing users with the updated listing information. Plenty of general scraper packages exist in the Python ecosystem, but they lack the focus on house rental and emailing functionality, such as the following two: https://github.com/narfman0/craigslist-scraper and https://github.com/juliomalegria/python-craigslist. 
+
+
+
 ## Installation
 
 ```bash
@@ -28,7 +53,7 @@ The official documentation is hosted on Read the Docs: https://pyhousehunter.rea
 
 ## Contributors
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/elabandari/pyhousehunter/graphs/contributors).
+We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/pyhousehunter/graphs/contributors).
 
 ### Credits
 
