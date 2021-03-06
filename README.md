@@ -16,10 +16,10 @@ Hunting for rentals can be an exhausting and frustrating experience in Canada, b
 
 | Function Name | Input | Output | Description |
 |-----------|------------|---------------|------------------|
-| scraper | url | csv file | Scrape data from rental websites into a csv file.|
-| data_cleaner | csv file location | csv file | Clean the extracted data |
-| data_filter | csv file, min_price, max_price, sqrt_ft, num_bathroom, num_bedroom, neighbourhood | csv file | Filter the cleaned data set based on user inputs|
-| send_email | csv file, email address | csv file | Send the organized listing information to user email |
+| scraper | url | Pandas DataFrame | Scrape data from rental websites into a Pandas DataFrame|
+| data_cleaner | Pandas DataFrame | csv file | Clean the extracted data |
+| data_filter | Pandas DataFrame, min_price, max_price, sqrt_ft, num_bathroom, num_bedroom, neighbourhood | Pandas DataFrame | Filter the cleaned data set based on user inputs|
+| send_email | Pandas DataFrame, email address | csv file | Send the organized listing information to user email |
 
 
 
