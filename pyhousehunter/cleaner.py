@@ -18,7 +18,7 @@ def data_cleaner(scraped_df):
     Returns
     -------
     pandas.core.frame.DataFrame
-        A cleaned dataframe containing ininformation like listing url, price, number of bedroom, area in sqft, and city.
+        A cleaned dataframe containing information like listing url, price, number of bedrooms, area in sqft, and city.
     
 
     Examples
