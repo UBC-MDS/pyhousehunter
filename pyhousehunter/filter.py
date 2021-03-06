@@ -32,7 +32,7 @@ def data_filter(df,
 
     Examples
     -------
-    >>> filter(cleaned_df, 2000, 3000, 900, 2, "Vancouver")
+    >>> data_filter(cleaned_df, 2000, 3000, 900, 2, "Vancouver")
                
     """
     
@@ -61,7 +61,7 @@ def data_filter(df,
     
     # function body
     filtered_df = df.query("(@min_price <= price <= @max_price)\
-                        and (num_bedroom.isnull() or num_bedroom == @num_bedroom)\
+                        and (num_bedroom.isnull() or num_bedroom >= @num_bedroom)\
                         and (area_sqft.isnull() or area_sqft >= @sqrt_ft)\
                         and (city.isnull() or city.str.casefold() == @city_name.casefold())")
 
