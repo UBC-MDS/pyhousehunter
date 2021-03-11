@@ -12,10 +12,10 @@ url = 'https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa
 # Tests on input
 def test_scraper_missing_required_input_url():
     """
-    Test to confirm that TypeError is raised the required URL input is not missing
+    Test to confirm that TypeError is raised the required URL input is missing
     """
     with raises(TypeError):
-        scraper.scraper(online = False)
+        scraper.scraper(online = True)
         scraper.scraper()
 
 def test_scraper_url_not_string():
@@ -32,7 +32,7 @@ def test_scraper_url_not_valid_craiglist_url():
     """
     with raises(ValueError):
        scraper.scraper(url = "https://www.haha.com", online = True) # fictitious website
-       scraper.scraper(url = "https://wiki.ubc.ca/Main_Page", online = True) # fictitious website
+       scraper.scraper(url = "https://wiki.ubc.ca/Main_Page", online = True) # wrong website
 
 def test_scraper_online_not_boolean():
     """

@@ -22,7 +22,7 @@ def scraper(url, online = False):
     Returns
     -------
     pandas.core.frame.DataFrame
-        A dataframe containing listing information like listing ID, listing url, price, house type and neighborhood. 
+        A dataframe containing listing information like listing url, price, house type. 
 
     Examples
     -------
