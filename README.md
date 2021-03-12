@@ -36,12 +36,23 @@ $ pip install -i https://test.pypi.org/simple/ pyhousehunter
 ```
 
 ## Features
-
-- TODO
-
+The pyhousehunter package contains the following four functions:
+- `scraper()`
+A function to scrape housing data from a given Craiglist url
+-`data_cleaner()`
+A function to clean web-scraped data with Pandas and Regex.
+- `data_filter()`
+Function to filter the given dataframe as per selection inputs
+-`send_email()`
+A function to email search filtered search results.
 ## Dependencies
 
-- TODO
+- python = "^3.8"
+- beautifulsoup4 = "^4.9.3"
+- requests = "^2.25.1"
+- pandas = "^1.2.3"
+- regex = "^2020.11.13"
+- geotext = "^0.4.0"
 
 ## Usage
 
