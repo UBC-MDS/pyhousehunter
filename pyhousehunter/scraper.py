@@ -43,7 +43,8 @@ def scraper(url, online=False):
 
     if re.search(regex, url) == None:
         raise ValueError(
-            "Invalid URL. Please enter a Craiglist Housing URL with this format https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa"
+            "Invalid URL. Please enter a Craiglist Housing URL with this formatn\
+            https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa"
         )
 
     ## the right option for online
