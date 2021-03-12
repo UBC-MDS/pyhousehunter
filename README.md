@@ -1,6 +1,6 @@
 # Python House Hunter 
 
-[![build](https://github.com/UBC-MDS/pyhousehunter/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/pyhousehunter/actions/workflows/build.yml) [![codecov](https://codecov.io/gh/elabandari/pyhousehunter/branch/main/graph/badge.svg)](https://codecov.io/gh/elabandari/pyhousehunter) ![Release](https://github.com/elabandari/pyhousehunter/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/pyhousehunter/badge/?version=latest)](https://pyhousehunter.readthedocs.io/en/latest/?badge=latest)
+[![build](https://github.com/UBC-MDS/pyhousehunter/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/pyhousehunter/actions/workflows/build.yml) [![codecov](https://codecov.io/gh/UBC-MDS/pyhousehunter/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/pyhousehunter) ![Release](https://github.com/elabandari/pyhousehunter/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/pyhousehunter/badge/?version=latest)](https://pyhousehunter.readthedocs.io/en/latest/?badge=latest)
 
 Python package for searching for housing on Craigslist.
 
@@ -9,7 +9,7 @@ Python package for searching for housing on Craigslist.
 
 ## Overview
 
-Hunting for rentals can be an exhausting and frustrating experience in Canada, but this process can be made easy with a simple installation of our package. This Python package intends to facilitate the house hunting process by scraping the listing information from Craigslist and organizing the extracted data for the user. Instead of having to manually go on the website to catch up with individual new listings, the user will be updated through email with new results as per their selection criteria. 
+Hunting for rentals can be an exhausting and frustrating experience in Canada, but this process can be made easy with a simple installation of our package. This Python package intends to facilitate the house hunting process by scraping the listing information from Craigslist and orgaCancel Changesnizing the extracted data for the user. Instead of having to manually go on the website to catch up with individual new listings, the user will be updated through email with new results as per their selection criteria. 
 
 
 ## Functions
