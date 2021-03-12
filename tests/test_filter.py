@@ -4,12 +4,11 @@
 from pyhousehunter import filter
 import pandas as pd
 from pytest import raises
-import regex as re
-import random
 
 
 toy_data = pd.read_csv("tests/cleaned_toy_data.csv", index_col=0)
 empty_data = toy_data[toy_data["price"] == -1]
+
 
 # Tests on input
 def test_filter_price_range():

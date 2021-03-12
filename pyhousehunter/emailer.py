@@ -2,7 +2,6 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
-from email import encoders
 import pandas as pd
 import regex as re
 import io
@@ -35,7 +34,7 @@ def send_email(
     regex = r"^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$"
     if not isinstance(email_recipient, str):
         raise TypeError("The email address must be a string.")
-    if re.search(regex, email_recipient) == None:
+    if re.search(regex, email_recipient) is None:
         raise ValueError("You have input an invalid Email Address.")
     if not isinstance(email_subject, str):
         raise TypeError("The subject must be a string.")

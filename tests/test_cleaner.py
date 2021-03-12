@@ -68,7 +68,7 @@ def test_cleaner_output_not_empty():
     """
     Test to confirm the output dataframe is not empty
     """
-    assert data.empty == False
+    assert data.empty is False
 
 
 def test_cleaner_output_shape():

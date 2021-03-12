@@ -29,7 +29,7 @@ jobs:
     - name: Check style
       uses: py-actions/flake8@v1
       with:
-        max-line-length: "100"
+        max-line-length: "150"
         exclude: "docs/conf.py"
     - name: Test with pytest
       run: poetry run pytest --cov=./ --cov-report=xml

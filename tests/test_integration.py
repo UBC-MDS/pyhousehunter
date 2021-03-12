@@ -2,10 +2,6 @@ from pyhousehunter import scraper
 from pyhousehunter import cleaner
 from pyhousehunter import filter
 from pyhousehunter import emailer
-import pandas as pd
-from pytest import raises
-import regex as re
-import random
 
 
 url = "https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa"
@@ -29,5 +25,5 @@ def test_full_integration():
             filtered_data=filtered_data,
             email_subject="Integration Test Success!",
         )
-        == None
+        is None
     )

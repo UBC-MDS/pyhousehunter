@@ -4,7 +4,6 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
-import csv
 import regex as re
 
 
@@ -31,7 +30,7 @@ def scraper(url, online=False):
     """
     # PART 0: Exception handling/ Input validation
 
-    ## the right Craiglist URL
+    # the right Craiglist URL
     regex = r"(http|https):\/\/vancouver.craigslist.org\/d\/apartments-housing-for-rent\/search\/apa.*"
 
     try:
@@ -41,18 +40,18 @@ def scraper(url, online=False):
     except SyntaxError:
         print("Wrong syntax. Please enter a correct Craiglist Housing URL")
 
-    if re.search(regex, url) == None:
+    if re.search(regex, url) is None:
         raise ValueError(
             "Invalid URL. Please enter a Craiglist Housing URL with this formatn\
             https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa"
         )
 
-    ## the right option for online
+    # the right option for online
     if type(online) != bool:
         raise TypeError("Please enter Boolean value: True or False")
 
     # PART 1: create soup object either from the url or local HTML file
-    if online == True:
+    if online is True:
         headers = {
             "DNT": "1",
             "Referer": "https://vancouver.craigslist.org/",

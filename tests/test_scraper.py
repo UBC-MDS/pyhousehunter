@@ -9,6 +9,7 @@ import random
 
 url = "https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa"
 
+
 # Tests on input
 def test_scraper_missing_required_input_url():
     """
@@ -102,7 +103,7 @@ def test_scraper_output_price_contain_dollar_sign():
 
 
 local_data = scraper.scraper(url=url, online=False)
-### for local data only
+# for local data only
 toy_data = pd.read_csv("tests/toy.csv")
 toy_data["price"] = toy_data["price"].astype(str).str.strip()
 toy_data["listing_id"] = toy_data["listing_id"].astype(str)
