@@ -5,7 +5,7 @@ from pyhousehunter import scraper
 import pandas as pd
 from pytest import raises
 import regex as re
-import random
+import random as random
 
 url = "https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa"
 
@@ -60,7 +60,7 @@ def test_scraper_output_not_empty():
     """
     Test to confirm the output dataframe is not empty
     """
-    assert data.empty is False
+    assert len(data.index) != 0
 
 
 def test_scraper_output_shape():
@@ -75,11 +75,10 @@ def test_scraper_output_fields_is_string():
     Test to confirm that the data type of each column of\n
     the output dataframe is a string
     """
-    for i in random.sample(range(0, data.shape[0]), 5):
-        for col in data.columns:
-            assert type(data[col][i]) == str
-            assert type(data[col][i]) == str
-            assert type(data[col][i]) == str
+    for col in data.columns:
+        assert type(data[col][1]) == str
+        assert type(data[col][2]) == str
+        assert type(data[col][3]) == str
 
 
 def test_scraper_output_listing_url_is_url():
