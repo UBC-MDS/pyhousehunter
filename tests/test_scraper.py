@@ -60,13 +60,15 @@ def test_scraper_output_not_empty():
     """
     Test to confirm the output dataframe is not empty
     """
-    assert len(data.index) != 0
+    data = scraper.scraper(url=url, online=True)
+    assert data.empty is False
 
 
 def test_scraper_output_shape():
     """
     Test to confirm the shape of the output dataframe is correct
     """
+    data = scraper.scraper(url=url, online=True)
     assert data.shape == (120, 5)
 
 
@@ -75,6 +77,7 @@ def test_scraper_output_fields_is_string():
     Test to confirm that the data type of each column of\n
     the output dataframe is a string
     """
+    data = scraper.scraper(url=url, online=True)
     for col in data.columns:
         assert type(data[col][1]) == str
         assert type(data[col][2]) == str
@@ -85,6 +88,7 @@ def test_scraper_output_listing_url_is_url():
     """
     Test that the data in the `listing_url` column contains the correct URL
     """
+    data = scraper.scraper(url=url, online=True)
     regex = r"(http|https):\/\/vancouver.craigslist.org.*"
     for i in random.sample(range(0, data.shape[0]), 5):
         listing_url = data["listing_url"][i]
@@ -95,6 +99,7 @@ def test_scraper_output_price_contain_dollar_sign():
     """
     Test to confirm that the data in the `price` column contains the dollar sign ($)
     """
+    data = scraper.scraper(url=url, online=True)
     regex = r"\$"
     for i in random.sample(range(0, data.shape[0]), 5):
         price = data["price"][i]
@@ -112,6 +117,7 @@ def test_scraper_output_match_toy_data():
     """
     Test to confirm that the scraped data frame contains data in toy dataset
     """
+    local_data = scraper.scraper(url=url, online=False)
     for i in range(0, toy_data.shape[0]):
         lst_id = toy_data.listing_id.tolist()
         assert local_data.loc[local_data["listing_id"] == lst_id[i], :].equals(
