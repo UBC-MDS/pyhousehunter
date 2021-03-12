@@ -70,19 +70,19 @@ def test_cleaner_output_price_is_numeric():
 
 def test_cleaner_output_num_bedroom_is_numeric():
     """
-    Test to confirm that the data type of price column of the output dataframe is numeric
+    Test to confirm that the data type of num_bedroom column of the output dataframe is numeric
     """
     assert is_numeric_dtype(data['num_bedroom'])
 
 def test_cleaner_area_sqft_is_numeric():
     """
-    Test to confirm that the data type of price column of the output dataframe is numeric
+    Test to confirm that the data type of area_sqft column of the output dataframe is numeric
     """
     assert is_numeric_dtype(data['area_sqft'])
 
 def test_cleaner_output_city_is_string():
     """
-    Test to confirm that the data type of price column of the output dataframe is numeric
+    Test to confirm that the data type of city column of the output dataframe is numeric
     """
     assert is_string_dtype(data['city'])
 
