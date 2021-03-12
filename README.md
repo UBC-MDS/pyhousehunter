@@ -52,6 +52,14 @@ $ pip install -i https://test.pypi.org/simple/ pyhousehunter
 The official documentation is hosted on Read the Docs: https://pyhousehunter.readthedocs.io/en/latest/
 
 ## Contributors
+The names and GitHub handles of core development team is listed below.
+
+Name|Github Handle
+------|----------
+Alex Truong Hai Yen|athy9193
+Ela Bandari|elabandari
+Elina Lin|elina-linglin
+Junting He|juntinghe
 
 We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/pyhousehunter/graphs/contributors).
 
