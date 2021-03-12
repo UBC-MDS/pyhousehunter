@@ -5,9 +5,10 @@ from pyhousehunter import scraper
 import pandas as pd
 from pytest import raises
 import regex as re
-import random
+import random as random
 
 url = "https://vancouver.craigslist.org/d/apartments-housing-for-rent/search/apa"
+
 
 # Tests on input
 def test_scraper_missing_required_input_url():
@@ -30,7 +31,8 @@ def test_scraper_url_not_string():
 
 def test_scraper_url_not_valid_craiglist_url():
     """
-    Test to confirm that ValueError is raised the required URL input is not a valid Craiglist housing URL
+    Test to confirm that ValueError is raised the required URL input is \n
+    not a valid Craiglist housing URL
     """
     with raises(ValueError):
         scraper.scraper(url="https://www.haha.com", online=True)  # fictitious website
@@ -51,14 +53,14 @@ def test_scraper_online_not_boolean():
 
 # Tests on output
 
-data = scraper.scraper(url=url, online=True)
+data = scraper.scraper(url=url, online=False)
 
 
 def test_scraper_output_not_empty():
     """
     Test to confirm the output dataframe is not empty
     """
-    assert data.empty == False
+    assert data.empty is False
 
 
 def test_scraper_output_shape():
@@ -70,13 +72,13 @@ def test_scraper_output_shape():
 
 def test_scraper_output_fields_is_string():
     """
-    Test to confirm that the data type of each column of the output dataframe is a string
+    Test to confirm that the data type of each column of\n
+    the output dataframe is a string
     """
-    for i in random.sample(range(0, data.shape[0]), 5):
-        for col in data.columns:
-            assert type(data[col][i]) == str
-            assert type(data[col][i]) == str
-            assert type(data[col][i]) == str
+    for col in data.columns:
+        assert type(data[col][1]) == str
+        assert type(data[col][2]) == str
+        assert type(data[col][3]) == str
 
 
 def test_scraper_output_listing_url_is_url():
@@ -86,7 +88,7 @@ def test_scraper_output_listing_url_is_url():
     regex = r"(http|https):\/\/vancouver.craigslist.org.*"
     for i in random.sample(range(0, data.shape[0]), 5):
         listing_url = data["listing_url"][i]
-        assert re.search(regex, listing_url) != None
+        assert re.search(regex, listing_url) is not None
 
 
 def test_scraper_output_price_contain_dollar_sign():
@@ -96,11 +98,9 @@ def test_scraper_output_price_contain_dollar_sign():
     regex = r"\$"
     for i in random.sample(range(0, data.shape[0]), 5):
         price = data["price"][i]
-        assert re.search(regex, price) != None
+        assert re.search(regex, price) is not None
 
 
-local_data = scraper.scraper(url=url, online=False)
-### for local data only
 toy_data = pd.read_csv("tests/toy.csv")
 toy_data["price"] = toy_data["price"].astype(str).str.strip()
 toy_data["listing_id"] = toy_data["listing_id"].astype(str)
@@ -112,6 +112,6 @@ def test_scraper_output_match_toy_data():
     """
     for i in range(0, toy_data.shape[0]):
         lst_id = toy_data.listing_id.tolist()
-        assert local_data.loc[local_data["listing_id"] == lst_id[i], :].equals(
+        assert data.loc[data["listing_id"] == lst_id[i], :].equals(
             pd.DataFrame(toy_data.iloc[i]).T
         )

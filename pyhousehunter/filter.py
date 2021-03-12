@@ -1,7 +1,3 @@
-import pandas as pd
-import csv
-
-
 def data_filter(df, min_price, max_price, sqrt_ft, num_bedroom, city_name):
 
     """Function to filter the given dataframe as per selection inputs

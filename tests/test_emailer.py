@@ -6,6 +6,7 @@ from pytest import raises
 toy_data = pd.read_csv("tests/toy.csv")
 empty_data = pd.DataFrame()
 
+
 # Tests on input
 def test_invalid_email_type():
     """
@@ -53,4 +54,4 @@ def test_email_sent_return_none():
     """
     Test to confirm that email has been sent and function returns None.
     """
-    assert emailer.send_email("elabandari@gmail.com", toy_data) == None
+    assert emailer.send_email("elabandari@gmail.com", toy_data) is None
