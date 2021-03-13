@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyhousehunter"
-version = "0.1.3"
+version = "0.1.4"
 description = "Python package for searching for rentals on Craigslist."
 authors = ["Ela Bandari <elabandari@gmail.com>"]
 license = "MIT"
