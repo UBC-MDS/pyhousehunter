@@ -12,6 +12,7 @@ requests = "^2.25.1"
 pandas = "^1.2.3"
 regex = "^2020.11.13"
 geotext = "^0.4.0"
+python-semantic-release = "^7.15.0"
 
 [tool.poetry.dev-dependencies]
 pytest-cov = "^2.11.1"
@@ -27,3 +28,9 @@ ipykernel = "^5.5.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.semantic_release]
+version_variable = "pyhousehunter/__init__.py:__version__"
+version_source = "commit"
+upload_to_pypi = "false"
+patch_without_tag = "true"
