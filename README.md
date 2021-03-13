@@ -1,6 +1,7 @@
 # Python House Hunter 
 
-[![build](https://github.com/UBC-MDS/pyhousehunter/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/pyhousehunter/actions/workflows/build.yml) [![codecov](https://codecov.io/gh/UBC-MDS/pyhousehunter/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/pyhousehunter) ![Release](https://github.com/elabandari/pyhousehunter/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/pyhousehunter/badge/?version=latest)](https://pyhousehunter.readthedocs.io/en/latest/?badge=latest)
+[![build](https://github.com/UBC-MDS/pyhousehunter/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/pyhousehunter/actions/workflows/build.yml) [![codecov](https://codecov.io/gh/UBC-MDS/pyhousehunter/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/pyhousehunter) ![Release](https://github.com/elabandari/pyhousehunter/workflows/Release/badge.svg)![Documentation Status](https://readthedocs.org/projects/pyhousehunter/badge/?version=latest&style=plastic)
+
 
 Python package for searching for housing on Craigslist.
 
