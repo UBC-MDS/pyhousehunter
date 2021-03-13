@@ -88,7 +88,7 @@ from pyhousehunter import filter
 filtered_data = filter.data_filter(df = cleaned_data, min_price = 1500, max_price = 2000, sqrt_ft = 500, num_bedroom = 1, city_name = "Vancouver")
 ```
 #### Emailing
-At this stage, your filtered results are ready to be emailed to your inbocx in a `.csv`. You will need to input your email address, and the filtered dataframe. You have the choice to change the optional `email_subject` argument to set your own email subject. Once the email has been sent, the function will let you know that the `"Email has been successfully sent"`. If there was a problem in sending the email the function will print `"The email was not sent. The following SMTP error occurred in the process: <error>"`. We hope this package has facilitated your house-hunting.
+At this stage, your filtered results are ready to be emailed to your inbox in a `.csv`. You will need to input your email address and the filtered dataframe. You have the choice to change the optional `email_subject` argument to set your own email subject. Once the email has been sent, the function will let you know that the `"Email has been successfully sent"`. If there was a problem in sending the email the function will print `"The email was not sent. The following SMTP error occurred in the process: <error>"`. We hope this package has facilitated your house-hunting.
 ```python 
 from pyhousehunter import emailer
 # Send email 
