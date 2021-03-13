@@ -21,6 +21,8 @@ python-semantic-release = "^7.15.0"
 flake8 = "^3.8.4"
 Sphinx = "^3.5.2"
 sphinxcontrib-napoleon = "^0.7"
+nbsphinx = "^0.8.2"
+ipykernel = "^5.5.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
